@@ -23,7 +23,13 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const prisma = new PrismaClient();
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://www.tallerinterestellar.com.ar',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
+}));
+
 app.use(express.json());
 
 app.get('/api/health', (req, res) => {
